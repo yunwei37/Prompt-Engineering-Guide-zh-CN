@@ -40,3 +40,7 @@ jobs:
       with:
         name: my-artifact
         path: .
+    - name: move and commit
+      run: |
+          rm repo-i18n-private/local_repo/.git
+          mv -R repo-i18n-private/local_repo .
