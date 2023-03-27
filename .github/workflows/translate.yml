@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: yunwei37/OpenAI-Continuous-Translator@master
       with:
-          git_repo_url: https://github.com/appcypher/awesome-wasm-langs
+          git_repo_url: https://github.com/appcypher/awesome-wasm-runtimes
           api_key: ${{ secrets.OPENAI_API_KEY }}
     - name: Upload artifact
       uses: actions/upload-artifact@v2
