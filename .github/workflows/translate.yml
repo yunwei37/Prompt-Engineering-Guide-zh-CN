@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: yunwei37/OpenAI-Continuous-Translator@master
-        with:
+      with:
           git_repo_url: https://github.com/appcypher/awesome-wasm-langs
           api_key: ${{ secrets.OPENAI_API_KEY }}
     - name: Upload artifact
@@ -25,7 +25,5 @@ jobs:
       with:
         name: my-artifact
         path: .
-    - name: move and commit
-      run: |
-          rm repo-i18n-private/local_repo/.git
-          mv -R repo-i18n-private/local_repo .
+    - name: Add & Commit
+      uses: EndBug/add-and-commit@v9.1.1
