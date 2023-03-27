@@ -31,7 +31,7 @@ jobs:
       run: |
         python repo-i18n-private/main.py
       env:
-        GIT_REPO_URL: ${{ secrets.GIT_REPO_URL }}
+        GIT_REPO_URL: https://github.com/VikParuchuri/zero_to_gpt
         SOURCE_LANGUAGE: en
         TARGET_LANGUAGE: zh
         API_KEY: ${{ secrets.API_KEY }}
