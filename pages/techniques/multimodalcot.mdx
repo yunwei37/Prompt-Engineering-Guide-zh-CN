@@ -1,0 +1,15 @@
+# 多模态 CoT 激励
+
+import { Callout, FileTree } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import MCOT from '../../img/multimodal-cot.png'
+
+最近 [Zhang 等人 (2023)](https://arxiv.org/abs/2302.00923) 提出了一种多模态思维链激励方法。传统的思维链方法主要关注语言模态。相比之下，多模态 CoT 将文本和视觉信息融入到一个两阶段框架中。第一步是基于多模态信息的理性生成，第二阶段是答案推断，利用生成的理性进行推断。
+
+多模态 CoT 模型 (1B) 在 ScienceQA 基准上优于 GPT-3.5。
+
+<Screenshot src={MCOT} alt="MCOT" />
+图片来源：[Zhang 等人 (2023)](https://arxiv.org/abs/2302.00923)
+
+进一步阅读：
+- [Language Is Not All You Need: Aligning Perception with Language Models](https://arxiv.org/abs/2302.14045)（2023年2月）。

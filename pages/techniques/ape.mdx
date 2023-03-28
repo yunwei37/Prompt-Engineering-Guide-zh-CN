@@ -1,0 +1,25 @@
+# Automatic Prompt Engineer (APE)
+
+import { Callout, FileTree } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import APE from '../../img/APE.png'
+import APECOT from '../../img/ape-zero-shot-cot.png'
+
+<Screenshot src={APE} alt="APE" />
+图片来源： [Zhou等人，（2022年）](https://arxiv.org/abs/2211.01910)
+
+[Zhou等人，（2022年）](https://arxiv.org/abs/2211.01910) 提出了自动提示工程师(Automatic Prompt Engineer，APE)：一种用于自动生成和选择提示的框架。提示生成问题被视为从易用性优化目标函数，并使用语言模型（LLMs）生成和搜索候选解决方案的自然语言合成问题。
+
+第一步包括使用一个大型语言模型作为推理模型，为任务生成提示候选解决方案。这些候选解决方案将指导搜索过程。提示以目标模型执行，然后根据计算评估得分选择最适合的提示。
+
+APE发现了比人工设计的"让我们逐步思考"提示更好的无快照CoT提示（Kojima等人，2022年）。
+
+提示"让我们逐步工作，以确保我们有正确的答案"引出了思维链的推理，并提高了MultiArith和GSM8K基准的性能：
+
+<Screenshot src={APECOT} alt="APECOT" />
+图片来源： [Zhou等人，（2022年）](https://arxiv.org/abs/2211.01910)
+
+本文涉及到一个与提示工程有关的重要主题，即自动优化提示的想法。虽然我们在本指南中没有深入探讨这个话题，但如果您对这个话题感兴趣，这里是一些关键论文：
+
+- [AutoPrompt](https://arxiv.org/abs/2010.15980) -提出了一种基于梯度引导搜索，用于自动创建各种任务提示的方法。
+- [Prefix Tuning](https://arxiv.org/abs/2101.00190) - 是一种轻巧的微调方法，为NLG任务添加前缀训练。- [Prompt Tuning](https://arxiv.org/abs/2104.08691) - 通过反向传播提出一种学习软提示的机制。

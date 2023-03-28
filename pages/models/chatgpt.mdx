@@ -1,0 +1,105 @@
+# ChatGPT 提示工程
+
+import { Callout, FileTree } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import CHATGPT1 from '../../img/chatgpt-1.png'
+import CHATGPTCLASSIC from '../../img/chatgpt-classic.png'
+
+在本节中，我们将介绍ChatGPT最新的提示工程技术，包括提示、应用、限制、论文和其他阅读材料。
+
+<Callout emoji="⚠️">
+  这一部分正在积极开发中。
+</Callout>
+
+主题：
+- [ChatGPT介绍](#chatgpt-introduction)
+- [审查对话任务](#reviewing-the-conversation-task)
+- [与ChatGPT对话](#conversations-with-chatgpt)
+
+---
+## ChatGPT介绍
+
+ChatGPT是[OpenAI](https://openai.com/blog/chatgpt)训练的一种新模型，具有会话交互的能力。该模型经过训练，遵循提示中的指令，并在对话的上下文中提供适当的回应。ChatGPT可以帮助回答问题、建议食谱、以某种风格写歌词、生成代码等等。
+
+ChatGPT使用人类反馈强化学习（RLHF）进行训练。虽然这个模型比以前的GPT迭代要强大多了（还经过了减少有害和虚假输出的训练），但它仍然有一些限制。让我们通过具体的例子来了解一些能力和限制。
+
+您可以在这里使用ChatGPT的研究预览[chat.openai.com](chat.openai.com)，但对于下面的示例，我们将使用OpenAI Playground上的“Chat”模式。
+
+---
+## 审查对话任务
+
+在以前的指南中，我们讨论了一些关于对话能力和角色提示的内容。我们介绍了如何指导LLM以特定的风格、特定的意图、行为和身份进行对话。
+
+让我们回顾一下我们以前的基本示例，创建一个对话系统，能够针对问题生成更多技术和科学的回答。
+
+*提示:*
+```".以下是与一个AI研究助手的对话。助手的语气是技术性和科学性的。
+
+人类：你好，你是谁？
+AI：您好！我是一个AI研究助手。今天我能帮您什么吗？
+人类：你能告诉我关于黑洞的形成吗？
+AI：ASSISTANT: 当一个巨大的恒星耗尽燃料并因自身的引力崩塌时，黑洞就被创建出来了。这种崩塌使得恒星变得极其密集，其引力场非常强大，甚至连光线都无法逃脱。这个不可逆转的点被称为事件视界。一旦恒星越过事件视界，它被认为是一个黑洞...```
+ASSISTANT: 背景：Teplizumab的源头可以追溯到新泽西州的一家名为Ortho Pharmaceutical的药品公司。在那里，科学家生成了一种名为OKT3的抗体的早期版本。最初是从老鼠中提取的分子。它能够结合到T细胞表面并限制它们的杀伤能力。该抗体于1986年获得批准，用于帮助预防肾脏移植后器官排斥，这使其成为人类使用的第一种治疗性抗体。
+
+问题: OKT3最初来源于哪里？
+
+答案:
+```
+```
+ASSISTANT: 老鼠。
+```根据官方的OpenAI文档，`gpt-3.5-turbo`模型的快照也将提供。例如，我们可以访问3月1日的快照`gpt-3.5-turbo-0301`。这使得开发人员可以选择特定版本的模型。同时也意味着针对不同版本的最佳模型使用最佳实践可能会有所改变。
+
+目前针对`gpt-3.5-turbo-0301`的建议是在“用户”消息中添加指令，而不是可用的“系统”消息。
+
+---
+## 参考资料
+
+- [ChatGPT和新的学术现实：使用大型语言模型撰写的研究论文及学术出版伦理](https://arxiv.org/abs/2303.13367)（2023年3月）
+- [LLMs是万能的大师吗？探究LLMs的领域不可知推理技能](https://arxiv.org/abs/2303.12810)（2023年3月）
+- [ChatGPT是否是一个良好的关键词生成器？初步研究](https://arxiv.org/abs/2303.13001)（2023年3月）
+- [MM-REACT：提示ChatGPT进行多模态推理和行动](https://arxiv.org/abs/2303.11381)（2023年3月）
+- [在零-shot学习环境中，使用大型语言模型可以用于估计政治家的意识形态](https://arxiv.org/abs/2303.12057)（2023年3月）
+- [中国中级英语学习者在深层连贯性方面超越了ChatGPT：基于英语叙述写作的证据](https://arxiv.org/abs/2303.11812)（2023年3月）
+- [GPT-3和GPT-3.5系列模型的全面能力分析](https://arxiv.org/abs/2303.10420)（2023年3月）
+- [ChatGPT作为科学写作的交通公平信息来源](https://arxiv.org/abs/2303.11158)（2023年3月）
+- [使用ChatGPT和具有提示学习的GPT-4将放射学报告翻译成平易近人的语言：有前途的结果、局限性和潜力](https://arxiv.org/abs/2303.09038)（2023年3月）
+- [ChatGPT参加计算机科学考试](https://arxiv.org/abs/2303.09461)（2023年3月）
+- [ChatGPT的一致性分析](https://arxiv.org/abs/2303.06273)（2023年3月）。- [算法幽灵在研究领域中：大语言模型与管理研究中的学术知识创造](https://arxiv.org/abs/2303.07304) (2023年3月)
+- [工作场所中的大型语言模型：职位类型分类的提示工程案例研究](https://arxiv.org/abs/2303.07142) (2023年3月)
+- [通过学生眼中的TikTok数据看ChatGPT：一项分析](https://arxiv.org/abs/2303.05349) (2023年3月)
+- [通过对话语言模型和提示工程从研究论文中提取准确的材料数据-以ChatGPT为例](https://arxiv.org/abs/2303.05352) (2023年3月)
+- [ChatGPT探索未来：大语言模型是否足以成为智能交通所需的全部？](https://arxiv.org/abs/2303.05382) (2023年3月)
+- [打造一位计算律师](https://arxiv.org/abs/2303.05383) (2023年3月)
+- [大语言模型的合成数据生成对临床文本挖掘有帮助吗？](https://arxiv.org/abs/2303.04360) (2023年3月)
+- [使用大型语言模型进行交互式菜单系统设计-MenuCraft](https://arxiv.org/abs/2303.04496) (2023年3月)
+- [人工智能生成内容（AIGC）的综合调查：从GAN到ChatGPT的生成式AI历史](https://arxiv.org/abs/2303.04226) (2023年3月)
+- [探究ChatGPT在事件提取中的可行性](https://arxiv.org/abs/2303.03836)
+- [ChatGPT:手动注释结束的开始？自动流派识别案例研究](https://arxiv.org/abs/2303.03953) (2023年3月)
+- [ChatGPT是否是好的自然语言生成评估器？初步研究](https://arxiv.org/abs/2303.04048) (2023年3月)
+- [情感计算是否将从基础模型和通用人工智能中诞生？ChatGPT的初步评估](https://arxiv.org/abs/2303.03186) (2023年3月)
+- [UZH_CLyp在SemEval-2023 任务9中的表现：交叉语言学习中的Head-First Fine-Tuning和ChatGPT数据生成](https://arxiv.org/abs/2303.01194) (2023年3月)。- [如何格式化输入以供ChatGPT模型使用](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb)（2023年3月）
+- [ChatGPT能评估人类个性吗？一个通用评估框架](https://arxiv.org/abs/2303.01248)（2023年3月）
+- [通过ChatGPT进行跨语言摘要](https://arxiv.org/abs/2302.14229)（2023年2月）
+- [ChatAug：利用ChatGPT进行文本数据增强](https://arxiv.org/abs/2302.13007)（2023年2月）
+- [ChatGPT医生，请告诉我我想听的：提示知识如何影响健康答案的正确性](https://arxiv.org/abs/2302.13793)（2023年2月）
+- [ChatGPT在数学词问题（MWP）上的独立评估](https://arxiv.org/abs/2302.13814)（2023年2月）
+- [ChatGPT：2.5个月后的元分析](https://arxiv.org/abs/2302.13795)（2023年2月）
+- [让我们聊聊吧！与ChatGPT的对话：技术，应用和限制](https://arxiv.org/abs/2302.13817)（2023年2月）
+- [检查你的事实并重试：通过外部知识和自动反馈改进大型语言模型](https://arxiv.org/abs/2302.12813)（2023年2月）
+- [关于ChatGPT的健壮性：对抗和分布外视角](https://arxiv.org/abs/2302.12095)（2023年2月）
+- [ChatGPT等生成性AI模型如何在SPC实践，教育和研究中（误）用？一项探索性研究](https://arxiv.org/abs/2302.10916)（2023年2月）
+- [ChatGPT能理解吗？ChatGPT和Fine-tuned BERT的比较研究](https://arxiv.org/abs/2302.10198)（2023年2月）
+- [一个提示模式目录，以增强使用ChatGPT时的提示工程](https://arxiv.org/abs/2302.11382)（2023年2月）
+- [通过与ChatGPT聊天进行零-shot信息提取](https://arxiv.org/abs/2302.10205)（2023年2月）
+- [ChatGPT：万事通，却样样不精](https://arxiv.org/abs/2302.10724)（2023年2月）
+- [ChatGPT和DALL-E 2关于决策和空间推理的试点评估](https://arxiv.org/abs/2302.09068)（2023年2月）- [网民，学者和信息专业人员对聊天GPT的看法，特别参考](https://arxiv.org/abs/2302.07136)（2023年2月）
+- [ChatGPT中的语言歧义分析](https://arxiv.org/abs/2302.06426)（2023年2月）
+- [聊天GPT与传统问题回答的知识图谱：当前状态和未来方向](https://arxiv.org/abs/2302.06466)（2023年2月）
+- [聊天GPT和生成式AI对科学意义的意义](https://www.nature.com/articles/d41586-023-00340-6)（2023年2月）
+- [应用BERT和ChatGPT对科学文献中的莱姆病进行情感分析](https://arxiv.org/abs/2302.06474)（2023年2月）
+- [探索ChatGPT的AI伦理：诊断分析](https://arxiv.org/abs/2301.12867)（2023年1月）
+- [ChatGPT为好事吗？关于大型语言模型用于教育的机遇和挑战](https://www.edu.sot.tum.de/fileadmin/w00bed/hctl/_my_direct_uploads/ChatGPT_for_Good_.pdf)（2023年1月）
+- [对话AI的政治意识形态：关于ChatGPT支持环保和左翼自由主义导向的证据](https://arxiv.org/abs/2301.01768)（2023年1月）
+- [提高可靠性的技术-OpenAI Cookbook](https://github.com/openai/openai-cookbook/blob/main/techniques_to_improve_reliability.md)
+- [令人惊叹的ChatGPT提示](https://github.com/f/awesome-chatgpt-prompts)
+- [介绍ChatGPT](https://openai.com/blog/chatgpt)（2022年11月）

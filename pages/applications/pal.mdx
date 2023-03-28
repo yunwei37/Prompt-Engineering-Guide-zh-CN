@@ -1,0 +1,107 @@
+# PAL（程序辅助语言模型）
+
+import { Callout， FileTree } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import PAL from '../../img/pal.png'
+
+[Gao et al。，(2022)]（https://arxiv.org/abs/2211.10435）提出了一种使用LLM读取自然语言问题并生成程序作为中间推理步骤的方法。命名为程序辅助语言模型（PAL），它与思维链提示不同，因为它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时（例如Python解释器）。
+
+<Screenshot src={PAL} alt="PAL" />
+图片来源：[Gao et al.，(2022)]（https://arxiv.org/abs/2211.10435）
+
+让我们通过 LangChain 和 OpenAI GPT-3 来看一个例子。 我们有兴趣开发一个简单的应用程序，它能够解释被问及的问题，并通过利用 Python 解释器来提供答案。
+
+具体而言，我们要创建一个功能，使得 LLM 能够回答需要日期理解的问题。我们将为 LLM 提供一个提示，该提示包括一些示例，这些示例来自于[这里](https://github.com/reasoning-machines/pal/blob/main/pal/prompt/date_understanding_prompt.py)。
+
+这些是我们需要的 import：
+
+```python
+import openai
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import os
+from langchain.llms import OpenAI
+from dotenv import load_dotenv
+```
+
+让我们先配置一些内容：
+
+```python
+load_dotenv()
+# API 配置
+openai.api_key = os.getenv("OPENAI_API_KEY")
+# for LangChain
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+```
+
+设置模型实例：
+
+```python
+llm = OpenAI(model_name='text-davinci-003', temperature=0)
+```
+
+设置提示和问题：
+
+```python
+question = "今天是2023年2月27日，我出生了25年了。我是在哪个日期出生的，MM/DD/YYYY？"
+
+DATE_UNDERSTANDING_PROMPT = """
+＃Q：2015年将在36小时内到来。 从今天开始一周后的日期是多少，MM/DD/YYYY？
+
+```：仅返回转换后的内容，不包括原始文本。# 如果2015年还有36个小时, 那么今天就是36小时之前的时间.
+today = datetime(2015, 1, 1) - relativedelta(hours=36)
+# 从今天起一周时间,
+one_week_from_today = today + relativedelta(weeks=1)
+# 用%m/%d/%Y格式显示出来的答案为
+one_week_from_today.strftime('%m/%d/%Y')
+# Q: 2019年的第一天是星期二，今天是2019年第一个星期一。今天的日期是多少，格式为MM/DD/YYYY?
+# 如果2019年的第一天是星期二，今天是2019年第一个星期一，那么今天就是6天之后。
+today = datetime(2019, 1, 1) + relativedelta(days=6)
+# 用%m/%d/%Y格式显示出来的答案为
+today.strftime('%m/%d/%Y')
+# Q: 音乐会原定于1943年06月01日举行，但因推迟一天至今天。10天前的日期是多少，格式为MM/DD/YYYY？
+# 如果音乐会原定于1943年06月01日举行，但因推迟一天至今天，那么今天就是一天之后。
+today = datetime(1943, 6, 1) + relativedelta(days=1)
+# 10天前的日期，
+ten_days_ago = today - relativedelta(days=10)
+# 用%m/%d/%Y格式显示出来的答案为
+ten_days_ago.strftime('%m/%d/%Y')
+# Q: 今天是1969年4月19日。24小时后的日期是多少，格式为MM/DD/YYYY？
+# 今天是1969年4月19日。
+today = datetime(1969, 4, 19)
+# 24小时后的日期，
+later = today + relativedelta(hours=24)
+# 用%m/%d/%Y格式显示出来的答案为
+today.strftime('%m/%d/%Y')
+# Q: 简认为今天是2002年3月11日，但实际上是3月12日，真正的日期比她想的晚了一天。24小时后的日期是多少，格式为MM/DD/YYYY？
+# 如果简认为今天是2002年3月11日，但实际上是3月12日，那么今天就是2002年3月1日。
+today = datetime(2002, 3, 12)
+# 24小时后的日期，
+later = today + relativedelta(hours=24)
+# 用%m/%d/%Y格式显示出来的答案为
+later.strftime('%m/%d/%Y')
+# Q: Jane在2001年2月的最后一天出生。今天是她16岁的生日。昨天的日期是多少，格式为MM/DD/YYYY？
+# 如果Jane在2001年2月的最后一天出生，并且今天是她16岁的生日，那么今天是16年之后。
+today = datetime(2001, 2, 28) + relativedelta(years=16)
+# 昨天的日期
+yesterday = today - relativedelta(days=1)
+# 用%m/%d/%Y格式显示出来的答案为
+yesterday.strftime('%m/%d/%Y')```python
+昨天 = 今天 - relativedelta(days=1)
+# 使用 %m/%d/%Y 格式化的答案是
+yesterday.strftime('%m/%d/%Y')
+# Q: {question}
+```
+
+```python
+llm_out = llm(DATE_UNDERSTANDING_PROMPT.format(question=question))
+print(llm_out)
+```
+
+```python
+exec(llm_out)
+print(born)
+```
+
+这将输出：`02/27/1998`。
+```

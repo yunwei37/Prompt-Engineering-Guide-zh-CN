@@ -1,0 +1,12 @@
+# 活动提示
+
+import { Callout, FileTree } from 'nextra-theme-docs'
+import {Screenshot} from 'components/screenshot'
+import ACTIVE from '../../img/active-prompt.png'
+
+思路链方法（CoT）依赖于一组固定的人类注释示例。问题在于，这些例子可能不是针对不同任务的最有效示例。为了解决这个问题，[Diao等人（2023）](https://arxiv.org/pdf/2302.12246.pdf)最近提出了一种名为Active-Prompt的新提示方法，以适应LLMs到不同任务特定示例提示（使用人类设计的CoT推理进行注释）。
+
+下面是该方法的说明。第一步是查询带有或不带有一些CoT示例的LLM。针对一组训练问题生成*k*个可能的答案。基于*k*答案计算不确定度指标（使用不一致性）。选择最不确定的问题供人类注释。然后使用新的带注释的示例来推断每个问题。
+
+<Screenshot src={ACTIVE} alt="ACTIVE" /> 
+图片来源：[Diao等人（2023）](https://arxiv.org/pdf/2302.12246.pdf)。
