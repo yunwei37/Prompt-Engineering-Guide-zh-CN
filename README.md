@@ -1,4 +1,4 @@
-# 令人敬畏的WebAssembly运行时 ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+# 精选 WebAssembly 运行时 ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 
 本存储库包含一个虚拟机和工具的列表，该列表执行WebAssembly（wasm）格式并/或将其编译为可执行机器代码 :octocat:
 
