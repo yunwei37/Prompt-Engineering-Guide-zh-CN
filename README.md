@@ -915,7 +915,7 @@ GraalWasm是实现于GraalVM中的WebAssembly引擎。它可以解释和编译�
 * **支持的平台**
 
     - `N/A`
-```<table>
+<table>
     <tr>
         <td>Wasmi</td>
         <td>Cranelift</td>
