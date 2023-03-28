@@ -15,8 +15,9 @@ jobs:
     - uses: actions/checkout@v3
     - uses: yunwei37/OpenAI-Continuous-Translator@master
       with:
-          git_repo_url: https://github.com/appcypher/awesome-wasm-runtimes
+          git_repo_url: https://github.com/dair-ai/Prompt-Engineering-Guide
           api_key: ${{ secrets.OPENAI_API_KEY }}
+          file_types: "md,mdx"
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
