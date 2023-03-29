@@ -1,11 +1,16 @@
-# ChatGPT提示工程
+# 提示词（prompt）工程指南（五）：ChatGPT提示工程
 
 在本节中，我们介绍ChatGPT的最新提示工程技术，包括提示、应用、限制、论文和其他阅读资料。
 
-**请注意，本节内容正在紧密开发中。**
+> 完整的中文版本指南和更丰富的参考资料在 Github 和 Gitee 中，自动持续翻译更新：
+> 🐙 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全
+>
+> - <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+> - <https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+
 
 主题：
-- [ChatGPT提示工程](#chatgpt提示工程)
+- [提示词（prompt）工程指南（五）：ChatGPT提示工程](#提示词prompt工程指南五chatgpt提示工程)
   - [ChatGPT简介](#chatgpt简介)
   - [审查对话任务](#审查对话任务)
   - [ChatGPT的对话](#chatgpt的对话)
@@ -162,3 +167,25 @@ ASSISTANT: OKT3最初是来源于老鼠。根据官方的OpenAI文档，`gpt-3.5
 [上一部分（应用）](./prompts-applications.md)
 
 [下一部分（对抗提示）](./prompts-adversarial.md)
+
+> 开源、免费自动持续翻译更新关于 GPT 和 prompt 工程的资料合集并同步国内 Gitee 镜像加速访问：
+> 
+> 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全（自动持续更新）：
+> 
+> - https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+> - https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+>
+> 关于 GPT-4 语言模型的提示（prompt）、工具和资源的中文精选列表（自动持续更新）
+>
+> - https://github.com/yunwei37/awesome-gpt4-zh-CN
+> - https://gitee.com/yunwei37/awesome-gpt4-zh-CN
+>
+> 使用 OpenAI API 的例子和中文指南（自动持续翻译更新 OpenAI 官方文档）
+>
+> - https://github.com/yunwei37/openai-cookbook-zh-cn
+> - https://gitee.com/yunwei37/openai-cookbook-zh-cn
+> 
+> 这个资源库包含了为 Prompt 工程手工整理的资源中文清单，重点是生成性预训练变换器（GPT）、ChatGPT、PaLM 等（自动持续更新）
+>
+> - https://github.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN
+> - https://gitee.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN

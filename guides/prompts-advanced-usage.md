@@ -1,13 +1,20 @@
-# 高级提示
+#! https://zhuanlan.zhihu.com/p/617991120
+# 提示词（prompt）工程指南（三）：高级提示
 
 到此为止，已经很明显完善提示有助于在不同任务上获得更好的结果。这就是提示工程的整体理念。
 
 尽管那些例子很有趣，但在我们进入更高级的概念之前，让我们正式介绍一些概念。
 
+> 完整的中文版本指南和更丰富的参考资料在 Github 和 Gitee 中，自动持续翻译更新：
+> 🐙 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全
+>
+> - <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+> - <https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+
 主题：
 <!-- TOC -->
 
-- [高级提示](#%E9%AB%98%E7%BA%A7%E6%8F%90%E7%A4%BA)
+- [提示词（prompt）工程指南（三）：高级提示](#%E6%8F%90%E7%A4%BA%E8%AF%8Dprompt%E5%B7%A5%E7%A8%8B%E6%8C%87%E5%8D%97%E4%B8%89%E9%AB%98%E7%BA%A7%E6%8F%90%E7%A4%BA)
     - [零样本提示](#%E9%9B%B6%E6%A0%B7%E6%9C%AC%E6%8F%90%E7%A4%BA)
     - [少样本提示](#%E5%B0%91%E6%A0%B7%E6%9C%AC%E6%8F%90%E7%A4%BA)
         - [Few-shot提示的限制](#few-shot%E6%8F%90%E7%A4%BA%E7%9A%84%E9%99%90%E5%88%B6)
@@ -151,10 +158,9 @@ A：
 ```
 答案是真的。
 ```
+这似乎行不通。看来 few-shot prompting 对于这种推理问题的可靠响应不够。上面的示例提供了任务的基本信息。如果您仔细观察，我们介绍的任务类型涉及更多的推理步骤。换句话说，如果我们将问题分解为步骤并向模型演示，可能会有所帮助。最近，一种名为“思维链 ([chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903)) 提示”的技术被广泛应用于解决更复杂的算术、常识和符号推理任务。
 
-"That didn't work. It seems like few-shot prompting is not enough to get reliable responses for this type of reasoning problem. The example above provides basic information on the task. If you take a closer look, the type of task we have introduced involves a few more reasoning steps. In other words, it might help if we break the problem down into steps and demonstrate that to the model. More recently, [chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903) has been popularized to address more complex arithmetic, commonsense, and symbolic reasoning tasks.
-
-Overall, it seems that providing examples is useful for solving some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity. 
+总体而言，提供示例对于解决某些任务是有用的。当零-shot提示和 few-shot 提示不足时，这可能意味着模型学到的知识不足以很好地完成任务。因此，我们建议开始考虑微调模型或尝试更高级的提示技术。接下来，我们将介绍一种名为“思维链提示”的流行提示技术。
 
 ---
 
@@ -429,3 +435,25 @@ APE发现了一个比人工设计的"让我们一步一步思考"提示（Kojima
 [上一节（基本提示）](./prompts-basic-usage.md)
 
 [下一节（应用）](./prompts-applications.md)
+
+> 开源、免费自动持续翻译更新关于 GPT 和 prompt 工程的资料合集并同步国内 Gitee 镜像加速访问：
+> 
+> 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全（自动持续更新）：
+> 
+> - https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+> - https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+>
+> 关于 GPT-4 语言模型的提示（prompt）、工具和资源的中文精选列表（自动持续更新）
+>
+> - https://github.com/yunwei37/awesome-gpt4-zh-CN
+> - https://gitee.com/yunwei37/awesome-gpt4-zh-CN
+>
+> 使用 OpenAI API 的例子和中文指南（自动持续翻译更新 OpenAI 官方文档）
+>
+> - https://github.com/yunwei37/openai-cookbook-zh-cn
+> - https://gitee.com/yunwei37/openai-cookbook-zh-cn
+> 
+> 这个资源库包含了为 Prompt 工程手工整理的资源中文清单，重点是生成性预训练变换器（GPT）、ChatGPT、PaLM 等（自动持续更新）
+>
+> - https://github.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN
+> - https://gitee.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN

@@ -1,14 +1,18 @@
-# 提示应用
+# 提示词（prompt）工程指南（四）：提示应用
 
 在本指南中，我们将介绍一些高级和有趣的方式，利用提示工程来执行更有用和更高级的任务。
 
-**请注意，该部分正在大力开发中。**
+> 完整的中文版本指南和更丰富的参考资料在 Github 和 Gitee 中，自动持续翻译更新：
+> 🐙 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全
+>
+> - <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+> - <https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
 
 <!-- TOC -->
 
-- [提示应用](#%E6%8F%90%E7%A4%BA%E5%BA%94%E7%94%A8)
+- [提示词（prompt）工程指南（四）：提示应用](#%E6%8F%90%E7%A4%BA%E8%AF%8Dprompt%E5%B7%A5%E7%A8%8B%E6%8C%87%E5%8D%97%E5%9B%9B%E6%8F%90%E7%A4%BA%E5%BA%94%E7%94%A8)
     - [生成数据](#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE)
-    - [PAL（程序辅助语言模型）Gao等，2022提出了一种使用LLMs阅读自然语言问题并生成程序作为中间推理步骤的方法。被称为“程序辅助语言模型（PAL）”，与思维链提示不同的是，它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时，如Python解释器。](#pal%E7%A8%8B%E5%BA%8F%E8%BE%85%E5%8A%A9%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8Bgao%E7%AD%892022%E6%8F%90%E5%87%BA%E4%BA%86%E4%B8%80%E7%A7%8D%E4%BD%BF%E7%94%A8llms%E9%98%85%E8%AF%BB%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E9%97%AE%E9%A2%98%E5%B9%B6%E7%94%9F%E6%88%90%E7%A8%8B%E5%BA%8F%E4%BD%9C%E4%B8%BA%E4%B8%AD%E9%97%B4%E6%8E%A8%E7%90%86%E6%AD%A5%E9%AA%A4%E7%9A%84%E6%96%B9%E6%B3%95%E8%A2%AB%E7%A7%B0%E4%B8%BA%E7%A8%8B%E5%BA%8F%E8%BE%85%E5%8A%A9%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8Bpal%E4%B8%8E%E6%80%9D%E7%BB%B4%E9%93%BE%E6%8F%90%E7%A4%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E6%98%AF%E5%AE%83%E4%B8%8D%E6%98%AF%E4%BD%BF%E7%94%A8%E8%87%AA%E7%94%B1%E6%A0%BC%E5%BC%8F%E6%96%87%E6%9C%AC%E6%9D%A5%E8%8E%B7%E5%BE%97%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E8%80%8C%E6%98%AF%E5%B0%86%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4%E5%8D%B8%E8%BD%BD%E5%88%B0%E7%BC%96%E7%A8%8B%E8%BF%90%E8%A1%8C%E6%97%B6%E5%A6%82python%E8%A7%A3%E9%87%8A%E5%99%A8)
+    - [PAL（程序辅助语言模型）](#pal%E7%A8%8B%E5%BA%8F%E8%BE%85%E5%8A%A9%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B)
     - [Python笔记本](#python%E7%AC%94%E8%AE%B0%E6%9C%AC)
 
 <!-- /TOC -->
@@ -62,7 +66,9 @@ LLMs有强大的文本生成能力。使用有效的提示策略可以引导模�
 
 ---
 
-## PAL（程序辅助语言模型）[Gao等，(2022)](https://arxiv.org/abs/2211.10435)提出了一种使用LLMs阅读自然语言问题并生成程序作为中间推理步骤的方法。被称为“程序辅助语言模型（PAL）”，与思维链提示不同的是，它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时，如Python解释器。
+## PAL（程序辅助语言模型）
+
+[Gao等，(2022)](https://arxiv.org/abs/2211.10435)提出了一种使用LLMs阅读自然语言问题并生成程序作为中间推理步骤的方法。被称为“程序辅助语言模型（PAL）”，与思维链提示不同的是，它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时，如Python解释器。
 
 ![](../img/pal.png)
 
@@ -115,12 +121,18 @@ one_week_from_today.strftime（'%m /% d /％Y'）。
 """
 ```
 
+格式：
+
+
 ```
-格式：仅返回已翻译的内容，不包括原始文本。# Q：2019年的第一天是星期二，今天是2019年的第一个星期一。今天的日期是什么？格式为MM/DD/YYYY。
+格式：仅返回已翻译的内容，不包括原始文本。
+
+Q：2019年的第一天是星期二，今天是2019年的第一个星期一。今天的日期是什么？格式为MM/DD/YYYY。
 
 如果2019年的第一天是星期二，而今天是2019年的第一个星期一，那么今天晚了6天。
 
 today = datetime(2019, 1, 1) + relativedelta(days=6)
+
 答案的格式为%m/%d/%Y
 
 today.strftime('%m/%d/%Y')
@@ -196,3 +208,25 @@ Q：{question}这将输出以下内容： `02/27/1998`
 [上一节（高级提示）](./prompts-advanced-usage.md)
 
 [下一节（ChatGPT）](./prompts-chatgpt.md)
+
+> 开源、免费自动持续翻译更新关于 GPT 和 prompt 工程的资料合集并同步国内 Gitee 镜像加速访问：
+> 
+> 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全（自动持续更新）：
+> 
+> - https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+> - https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+>
+> 关于 GPT-4 语言模型的提示（prompt）、工具和资源的中文精选列表（自动持续更新）
+>
+> - https://github.com/yunwei37/awesome-gpt4-zh-CN
+> - https://gitee.com/yunwei37/awesome-gpt4-zh-CN
+>
+> 使用 OpenAI API 的例子和中文指南（自动持续翻译更新 OpenAI 官方文档）
+>
+> - https://github.com/yunwei37/openai-cookbook-zh-cn
+> - https://gitee.com/yunwei37/openai-cookbook-zh-cn
+> 
+> 这个资源库包含了为 Prompt 工程手工整理的资源中文清单，重点是生成性预训练变换器（GPT）、ChatGPT、PaLM 等（自动持续更新）
+>
+> - https://github.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN
+> - https://gitee.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN

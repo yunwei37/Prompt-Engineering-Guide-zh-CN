@@ -1,8 +1,15 @@
-# 提示词（prompt）工程指南：提示介绍
+#! https://zhuanlan.zhihu.com/p/617983303
+# 提示词（prompt）工程指南（一）：提示介绍
 
 提示工程是一种相对较新的学科，专门用于开发和优化提示，以高效地使用语言模型（LM）来处理各种应用和研究主题。提示工程技能有助于更好地理解大型语言模型（LLMs）的能力和局限性。研究人员使用提示工程来提高LLMs在各种常见和复杂任务上的容量，例如问题解答和算术推理。开发人员使用提示工程来设计与LLMs和其他工具接口的强大而有效的提示技术。
 
 本指南介绍了标准提示的基础知识，以提供如何使用提示与大型语言模型（LLMs）进行交互和指导的大致概念。
+
+> 完整的中文版本指南和更丰富的参考资料在 Github 和 Gitee 中，自动持续翻译更新：
+> 🐙 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全
+>
+> - <https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
+> - <https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN>
 
 除非另有说明，否则所有示例均已经过“text-davinci-003”（使用OpenAI的playground）测试。它使用默认配置，例如`temperature=0.7`和`top-p=1`。
 
@@ -10,15 +17,16 @@
 
 <!-- TOC -->
 
-- [提示词（prompt）工程指南：提示介绍](#%E6%8F%90%E7%A4%BA%E8%AF%8Dprompt%E5%B7%A5%E7%A8%8B%E6%8C%87%E5%8D%97%E6%8F%90%E7%A4%BA%E4%BB%8B%E7%BB%8D)
+- [提示词（prompt）工程指南（一）：提示介绍](#%E6%8F%90%E7%A4%BA%E8%AF%8Dprompt%E5%B7%A5%E7%A8%8B%E6%8C%87%E5%8D%97%E4%B8%80%E6%8F%90%E7%A4%BA%E4%BB%8B%E7%BB%8D)
     - [基础提示](#%E5%9F%BA%E7%A1%80%E6%8F%90%E7%A4%BA)
     - [关于LLM设置的说明](#%E5%85%B3%E4%BA%8Ellm%E8%AE%BE%E7%BD%AE%E7%9A%84%E8%AF%B4%E6%98%8E)
     - [标准提示](#%E6%A0%87%E5%87%86%E6%8F%90%E7%A4%BA)
+    - [提示元素](#%E6%8F%90%E7%A4%BA%E5%85%83%E7%B4%A0)
     - [设计提示的一般提示](#%E8%AE%BE%E8%AE%A1%E6%8F%90%E7%A4%BA%E7%9A%84%E4%B8%80%E8%88%AC%E6%8F%90%E7%A4%BA)
-        - [开始简单](#%E5%BC%80%E5%A7%8B%E7%AE%80%E5%8D%95)
+        - [开始](#%E5%BC%80%E5%A7%8B)
         - [指令](#%E6%8C%87%E4%BB%A4)
         - [具体性](#%E5%85%B7%E4%BD%93%E6%80%A7)
-        - [避免不精确。](#%E9%81%BF%E5%85%8D%E4%B8%8D%E7%B2%BE%E7%A1%AE)
+        - [避免不精确](#%E9%81%BF%E5%85%8D%E4%B8%8D%E7%B2%BE%E7%A1%AE)
         - [做还是不做？](#%E5%81%9A%E8%BF%98%E6%98%AF%E4%B8%8D%E5%81%9A)
 
 <!-- /TOC -->
@@ -32,11 +40,13 @@
 这是一个简单提示的基本示例：
 
 *提示*
+
 ```
 The sky is
 ```
 
 *输出：*
+
 ```
 蓝色的
 
@@ -48,6 +58,7 @@ The sky is
 这个基本示例也凸显了提供更多上下文或指令有多么必要以便更加精确地达到我们的目的。
 
 让我们尝试改进一下：*提示：*
+
 ```
 完成下面这个句子：
 
@@ -65,6 +76,7 @@ The sky is
 上面的例子是对当前LLM的基本说明。 当前的LLMs能够执行各种高级任务，包括文本摘要、数学推理和代码生成。
 
 ---
+
 ## 关于LLM设置的说明
 
 在使用提示时，您将通过API或直接与LLM进行交互。您可以配置一些参数以获得不同提示的结果。
@@ -78,6 +90,7 @@ The sky is
 在开始一些基本的示例之前，请记住，您的结果可能取决于您使用的LLM版本。
 
 ---
+
 ## 标准提示
 
 我们在上面尝试了一个非常简单的提示。标准提示的格式如下：
@@ -109,7 +122,6 @@ A：
 
 ```
 
-
 而它的QA格式版本看起来像这样：
 
 ```
@@ -129,6 +141,7 @@ A：
 请记住，不需要使用QA格式。格式取决于手头的任务。例如，您可以执行简单的分类任务并提供演示任务的范例，如下所示：
 
 *提示：*
+
 ```
 这真棒！ // 积极
 这很糟糕！ // 消极
@@ -137,6 +150,7 @@ A：
 ```
 
 *输出：*
+
 ```
 消极
 ```
@@ -144,7 +158,7 @@ A：
 Few-shot prompts可以实现上下文学习，这是语言模型在只有少数例子的情况下学习任务的能力。在即将推出的指南中，我们将看到更多此类操作。
 
 ---
-##提示元素
+## 提示元素
 
 随着我们涵盖越来越多的提示工程示例和应用程序，您会注意到某些元素构成了提示。
 
@@ -161,11 +175,12 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 并非所有组件都需要进行提示，格式取决于手头的任务。在即将推出的指南中，我们将介绍更多具体例子。
 
 ---
+
 ## 设计提示的一般提示
 
 以下是设计提示时需要牢记的一些提示：
 
-### 开始简单
+### 开始
 
 作为您开始设计提示的起点，您应该牢记它是一个迭代的过程，需要大量的实验来达到最佳的结果。使用像 OpenAI 或 Cohere 这样的简单播放器是一个不错的起点。
 
@@ -193,6 +208,7 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 ```
 
 *输出：*
+
 ```
 ¡Hola!
 ```
@@ -206,6 +222,7 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 例如，让我们尝试从文本中提取特定信息的简单提示。
 
 *提示：*
+
 ```
 从以下文本中提取地名。
 
@@ -214,14 +231,16 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 
 输入："Although these developments are encouraging to researchers, much is still a mystery. “We often have a black box between the brain and the effect we see in the periphery,” says Henrique Veiga-Fernandes, a neuroimmunologist at the Champalimaud Centre for the Unknown in Lisbon. “If we want to use it in the therapeutic context, we need to understand the mechanism."
 ```
+
 *输出:*
+
 ```
 地点：Champalimaud Centre for the Unknown、Lisbon
 ```
 
 输入文本来源于[这篇Nature文章](https://www.nature.com/articles/d41586-023-00509-z)。
 
-### 避免不精确。
+### 避免不精确
 
 给出了有关详细说明和改进格式的提示之后，很容易陷入关于提示过于聪明并可能创建不准确的描述的陷阱。通常更好的方法是具体而直接。这里的类比与有效的沟通非常相似——越直接，信息传递就越有效。
 
@@ -241,9 +260,10 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 
 设计提示时的另一个常见提示是避免说出不要做什么，而要说出相应的做法。这样可以更具体，并侧重于细节，这些细节可以引导模型产生良好的响应。
 
-以下是电影推荐聊天机器人在我编写的指示中失败的一个例子，因为我关注了不要做什么。 
+以下是电影推荐聊天机器人在我编写的指示中失败的一个例子，因为我关注了不要做什么。
 
 *提示：*
+
 ```
 以下是向顾客推荐电影的代理。不要问利益。不要问个人信息。
 
@@ -269,6 +289,7 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 ```
 
 *输出：*
+
 ```
 很抱歉，我没有关于您兴趣的信息。然而，这是目前全球热门电影列表：[电影列表]。希望您能喜欢其中某个！
 ```
@@ -277,3 +298,25 @@ Few-shot prompts可以实现上下文学习，这是语言模型在只有少数�
 
 ---
 [下一章节（基本提示）](./prompts-basic-usage.md)。
+
+> 开源、免费自动持续翻译更新关于 GPT 和 prompt 工程的资料合集并同步国内 Gitee 镜像加速访问：
+> 
+> 关于提示词工程（prompt）的指南、论文、讲座、笔记本和资源大全（自动持续更新）：
+> 
+> - https://github.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+> - https://gitee.com/yunwei37/Prompt-Engineering-Guide-zh-CN
+>
+> 关于 GPT-4 语言模型的提示（prompt）、工具和资源的中文精选列表（自动持续更新）
+>
+> - https://github.com/yunwei37/awesome-gpt4-zh-CN
+> - https://gitee.com/yunwei37/awesome-gpt4-zh-CN
+>
+> 使用 OpenAI API 的例子和中文指南（自动持续翻译更新 OpenAI 官方文档）
+>
+> - https://github.com/yunwei37/openai-cookbook-zh-cn
+> - https://gitee.com/yunwei37/openai-cookbook-zh-cn
+> 
+> 这个资源库包含了为 Prompt 工程手工整理的资源中文清单，重点是生成性预训练变换器（GPT）、ChatGPT、PaLM 等（自动持续更新）
+>
+> - https://github.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN
+> - https://gitee.com/yunwei37/Awesome-Prompt-Engineering-ZH-CN
