@@ -4,10 +4,10 @@ import { Callout， FileTree } from 'nextra-theme-docs'
 import {Screenshot} from 'components/screenshot'
 import PAL from '../../img/pal.png'
 
-[Gao et al。，(2022)]（https://arxiv.org/abs/2211.10435）提出了一种使用LLM读取自然语言问题并生成程序作为中间推理步骤的方法。命名为程序辅助语言模型（PAL），它与思维链提示不同，因为它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时（例如Python解释器）。
+[Gao et al。，(2022)](https://arxiv.org/abs/2211.10435）提出了一种使用LLM读取自然语言问题并生成程序作为中间推理步骤的方法。命名为程序辅助语言模型（PAL），它与思维链提示不同，因为它不是使用自由格式文本来获得解决方案，而是将解决步骤卸载到编程运行时（例如Python解释器）。
 
 <Screenshot src={PAL} alt="PAL" />
-图片来源：[Gao et al.，(2022)]（https://arxiv.org/abs/2211.10435）
+图片来源：[Gao et al.，(2022)](https://arxiv.org/abs/2211.10435）
 
 让我们通过 LangChain 和 OpenAI GPT-3 来看一个例子。 我们有兴趣开发一个简单的应用程序，它能够解释被问及的问题，并通过利用 Python 解释器来提供答案。
 
