@@ -20,5 +20,5 @@ jobs:
       with:
         name: my-artifact
         path: .
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v9.1.1
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4
