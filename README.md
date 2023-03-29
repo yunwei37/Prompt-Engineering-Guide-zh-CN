@@ -1,4 +1,4 @@
-# 提示工程指南
+# 提示词工程指南
 
 提示工程是一门相对较新的学科，用于开发和优化提示，以高效地利用语言模型（LMs）以应用于各种应用和研究主题。提示工程技能有助于更好地理解大型语言模型（LLMs）的能力和局限性。研究人员使用提示工程来提高LLMs在广泛的常见和复杂任务（如问答和算术推理）上的能力。开发人员使用提示工程来设计强大而有效的提示技术，以与LLMs和其他工具进行交互。
 
@@ -26,6 +26,7 @@
 ## 讲座
 
 我们发表了一场为期1小时的讲座，详细介绍提示技术、应用和工具。
+
 - [视频讲座](https://youtu.be/dOxUroR57xs)
 - [附带代码的notebook](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/notebooks/pe-lecture.ipynb)
 - [幻灯片](https://github.com/dair-ai/Prompt-Engineering-Guide/blob/main/lecture/Prompt-Engineering-Lecture-Elvis.pdf)

@@ -1,17 +1,23 @@
 # 高级提示
+
 到此为止，已经很明显完善提示有助于在不同任务上获得更好的结果。这就是提示工程的整体理念。
 
 尽管那些例子很有趣，但在我们进入更高级的概念之前，让我们正式介绍一些概念。
 
 主题：
+<!-- TOC -->
 
-- [零样本提示](#零样本提示)
-- [少样本提示](#少样本提示)
-- [思维链提示](#思维链提示)
-- [零样本CoT](#零样本CoT)
-- [自我一致性](#自我一致性)
-- [生成的知识提示](#生成的知识提示)
-- [自动提示工程师](#自动提示工程师APE)
+- [高级提示](#%E9%AB%98%E7%BA%A7%E6%8F%90%E7%A4%BA)
+    - [零样本提示](#%E9%9B%B6%E6%A0%B7%E6%9C%AC%E6%8F%90%E7%A4%BA)
+    - [少样本提示](#%E5%B0%91%E6%A0%B7%E6%9C%AC%E6%8F%90%E7%A4%BA)
+        - [Few-shot提示的限制](#few-shot%E6%8F%90%E7%A4%BA%E7%9A%84%E9%99%90%E5%88%B6)
+    - [链式思考提示](#%E9%93%BE%E5%BC%8F%E6%80%9D%E8%80%83%E6%8F%90%E7%A4%BA)
+    - [零样本CoT](#%E9%9B%B6%E6%A0%B7%E6%9C%ACcot)
+    - [自一致性](#%E8%87%AA%E4%B8%80%E8%87%B4%E6%80%A7)
+    - [生成知识提示](#%E7%94%9F%E6%88%90%E7%9F%A5%E8%AF%86%E6%8F%90%E7%A4%BA)
+    - [自动提示工程师（APE）](#%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B%E5%B8%88ape)
+
+<!-- /TOC -->
 
 ---
 ## 零样本提示
@@ -149,6 +155,7 @@ A：
 "That didn't work. It seems like few-shot prompting is not enough to get reliable responses for this type of reasoning problem. The example above provides basic information on the task. If you take a closer look, the type of task we have introduced involves a few more reasoning steps. In other words, it might help if we break the problem down into steps and demonstrate that to the model. More recently, [chain-of-thought (CoT) prompting](https://arxiv.org/abs/2201.11903) has been popularized to address more complex arithmetic, commonsense, and symbolic reasoning tasks.
 
 Overall, it seems that providing examples is useful for solving some tasks. When zero-shot prompting and few-shot prompting are not sufficient, it might mean that whatever was learned by the model isn't enough to do well at the task. From here it is recommended to start thinking about fine-tuning your models or experimenting with more advanced prompting techniques. Up next we talk about one of the popular prompting techniques called chain-of-thought prompting which has gained a lot of popularity. 
+
 ---
 
 ## 链式思考提示
