@@ -19,7 +19,7 @@
   "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "@vercel/analytics": "^0.1.11",
-    "next": "^13.0.6",
+    "next": "^16.1.6",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
